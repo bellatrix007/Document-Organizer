@@ -10,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.bellatrix.aditi.documentorganizer.Database.DBQueries;
 
-import java.util.regex.Pattern;
+import java.util.Random;
+
+import static com.bellatrix.aditi.documentorganizer.Utilities.Constants.FOLDER_COLOR;
 
 /**
  * Created by Aditi on 14-03-2019.
@@ -51,22 +52,18 @@ public class AddFolderDialogFragment extends DialogFragment{
                         String folderName =  ((EditText) AddFolderDialogFragment.this.getDialog()
                                 .findViewById(R.id.et_folder_name))
                                 .getText().toString();
-                        String color = ((EditText) AddFolderDialogFragment.this.getDialog()
-                                .findViewById(R.id.et_color))
-                                .getText().toString();
-                        if(!Pattern.compile("#[a-fA-F0-9]{6}").matcher(color).matches()||folderName.equals("")) {
-                            Toast.makeText(getActivity(),"Invalid input",Toast.LENGTH_SHORT).show();
-                        } else {
-                            String splitedName[] =  folderName.split(" ");
-                            String folderName1 = "";
-                            for(String s: splitedName) {
-                                folderName1 = folderName1 + s + "_";
-                            }
-                            folderName1 = folderName1.substring(0,folderName1.length()-1);
-                            DBQueries.insertFolder(getActivity(),folderName1,color);
-                            AddFolderDialogFragment.this.getDialog().dismiss();
 
+                        String color = FOLDER_COLOR[new Random().nextInt(FOLDER_COLOR.length)];// get color
+                        String splitedName[] =  folderName.split(" ");
+                        String folderName1 = "";
+                        for(String s: splitedName) {
+                            folderName1 = folderName1 + s + "_";
                         }
+                        folderName1 = folderName1.substring(0,folderName1.length()-1);
+                        DBQueries.insertFolder(getActivity(),folderName1,color);
+                        AddFolderDialogFragment.this.getDialog().dismiss();
+
+
                     }
                 });
             }

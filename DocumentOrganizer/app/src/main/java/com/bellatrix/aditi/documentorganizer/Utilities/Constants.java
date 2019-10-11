@@ -16,9 +16,8 @@ public class Constants {
                     new Folder("Handwritten","#9AC6C5"),
                     new Folder("Certificates_and_Marksheets", "#A38DBA")));
 
-    // TODO: Add colors for folder
-    public static int colorIndex=0;
-    public static final String[] COLORS = {"#F88B7B","#848373"};
+    public static final String[] FOLDER_COLOR = {"#7EE500","#848373","#C6E513","#E6C926","#E79939",
+        "#E7744D","#E86167","#E9749C","#E989C7","F88B7B"};
 
     public static ArrayList<String> BNR_SUB_CATEGORIES_1 = new ArrayList<>(
             Arrays.asList("Electronic Goods",

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bellatrix.aditi.documentorganizer.Database.Contract;
+import com.bellatrix.aditi.documentorganizer.Utilities.CommonFunctions;
 import com.bumptech.glide.Glide;
 
 /**
@@ -78,7 +79,8 @@ public class ImageSearchAdapter extends RecyclerView.Adapter<ImageSearchAdapter.
                     .into(imageView);
 
             title.setText(mCursor.getString(mCursor.getColumnIndex(Contract.Documents.COLUMN_TITLE)));
-            folder.setText(mCursor.getString(mCursor.getColumnIndex(Contract.Documents.COLUMN_CATEGORY)));
+            folder.setText(CommonFunctions.toReadableString(
+                    mCursor.getString(mCursor.getColumnIndex(Contract.Documents.COLUMN_CATEGORY))));
         }
 
         @Override

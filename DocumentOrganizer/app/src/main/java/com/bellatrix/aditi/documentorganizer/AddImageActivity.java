@@ -3,12 +3,10 @@ package com.bellatrix.aditi.documentorganizer;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,9 +24,9 @@ import com.bellatrix.aditi.documentorganizer.Database.DBQueries;
 import com.bellatrix.aditi.documentorganizer.Utilities.CommonFunctions;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import static com.bellatrix.aditi.documentorganizer.Utilities.Constants.COLORS;
-import static com.bellatrix.aditi.documentorganizer.Utilities.Constants.colorIndex;
+import static com.bellatrix.aditi.documentorganizer.Utilities.Constants.FOLDER_COLOR;
 
 public class AddImageActivity extends AppCompatActivity{
 
@@ -128,8 +126,7 @@ public class AddImageActivity extends AppCompatActivity{
                     if(newFolderName.equals("")) {
                         Toast.makeText(AddImageActivity.this,"Please enter new folder name",Toast.LENGTH_SHORT).show();
                     } else {
-                        DBQueries.insertFolder(AddImageActivity.this,newFolderName,COLORS[colorIndex]);
-                        colorIndex=(colorIndex+1)%COLORS.length;
+                        DBQueries.insertFolder(AddImageActivity.this,newFolderName,FOLDER_COLOR[new Random().nextInt(FOLDER_COLOR.length)]);
                         folderName = newFolderName;
                         goToNextActivity();
                     }

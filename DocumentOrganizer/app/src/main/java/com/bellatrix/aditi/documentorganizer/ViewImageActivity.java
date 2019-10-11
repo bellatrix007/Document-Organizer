@@ -104,10 +104,10 @@ public class ViewImageActivity extends AppCompatActivity implements ImageAdapter
                 mCursor = DBQueries.getImageByFolder(ViewImageActivity.this,folderName,sortBy);
                 imageAdapter.swapCursor(mCursor);
                 return true;
-            case R.id.action_filter:
-                return true;
-            case R.id.action_rename_folder:
-                return true;
+//            case R.id.action_filter:
+//                return true;
+//            case R.id.action_rename_folder:
+//                return true;
             case R.id.action_delete_folder:
                 delete();
                 return true;
